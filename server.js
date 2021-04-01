@@ -29,14 +29,15 @@ app.get('/api/whoami', (req, res) => {
   //get ipaddress v6
   //get language en-us
   //get software mozilla
-  console.log(req);
 
-  /*req.ip -> doesnt work*/
+  /*req.ip -> doesnt work
+  * req.connection.remoteAddress -> doesnt work*/
+
 
   res.json({
-    'ipaddress': req.connection.remoteAddress,
+    'ipaddress': req.socket.address().address,
     'language': req.header('accept-language'),
-      'software': req.header('user-agent')});
+    'software': req.header('user-agent')});
 });
 
 
