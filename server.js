@@ -31,8 +31,10 @@ app.get('/api/whoami', (req, res) => {
   //get software mozilla
   console.log(req);
 
+  /*req.ip -> doesnt work*/
+
   res.json({
-    'ipaddress': req.ip,
+    'ipaddress': req.connection.remoteAddress,
     'language': req.header('accept-language'),
       'software': req.header('user-agent')});
 });
