@@ -31,11 +31,12 @@ app.get('/api/whoami', (req, res) => {
   //get software mozilla
 
   /*req.ip -> doesnt work
-  * req.connection.remoteAddress -> doesnt work*/
+  * req.connection.remoteAddress -> doesnt work
+  * req.socket.address().address - > doesnt work*/
 
 
   res.json({
-    'ipaddress': req.socket.address().address,
+    'ipaddress': req.header('ipaddress'),
     'language': req.header('accept-language'),
     'software': req.header('user-agent')});
 });
