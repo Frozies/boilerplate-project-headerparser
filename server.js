@@ -32,11 +32,13 @@ app.get('/api/whoami', (req, res) => {
 
   /*req.ip -> doesnt work
   * req.connection.remoteAddress -> doesnt work
-  * req.socket.address().address - > doesnt work*/
+  * req.socket.address().address - > doesnt work
+  * req.header('ipaddress') -> doesnt work
+  * */
 
 
   res.json({
-    'ipaddress': req.header('ipaddress'),
+    'ipaddress': req.header('X-Forwarded-For'),
     'language': req.header('accept-language'),
     'software': req.header('user-agent')});
 });
